@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +22,31 @@ namespace TheGameOfLife
 
         public void SelectCells()
         {
-            Console.WriteLine("Please select the alive cells in the initial grid.");
+            Console.WriteLine("Please configure the initial cells in the grid. A = Alive, D = Dead\n");
+            for (int i = 0; i < cells.Count; i++)
+            {
+                Console.Write($"Cell #{i}: ");
 
+                string stringAlive = Console.ReadLine().ToLower();
+                bool boolAlive = false;
+
+                while (stringAlive == null || ( !stringAlive.Equals("a") && !stringAlive.Equals("d") ) )
+                {
+                    Console.Write("\nPlease input the letter A or the letter D: ");
+                    stringAlive = Console.ReadLine().ToLower();
+                }
+
+                if ( stringAlive.Equals('a') )
+                    boolAlive = true;
+
+                cells[i].Alive = boolAlive;
+            }
+
+            Console.WriteLine("\nInitial cell state configured succesfully.");
+            Console.WriteLine("The Game of Life will start. Press any key to continue.");
+            Console.ReadKey();
+            Console.Clear();
+            Display();
         }
 
         void Display()

@@ -7,7 +7,7 @@ static Grid SelectSize()
     int size = 0;
     while (stringSize == null || !int.TryParse(stringSize, out size) || size < 3)
     {
-        Console.WriteLine("\nPlease input an integer grid size starting from 3.");
+        Console.Write("\nPlease input an integer grid size starting from 3: ");
         stringSize = Console.ReadLine();
     }
     size = int.Parse(stringSize);
@@ -39,10 +39,10 @@ static Grid SelectSize()
 
         //Console.WriteLine(i);
         //Console.WriteLine("---------------------------------");
-        //Console.WriteLine(cell._alive);
-        //Console.WriteLine(cell._isLeftEdge);
-        //Console.WriteLine(cell._isRightEdge);
-        //Console.WriteLine(cell._isCorner);
+        //Console.WriteLine(cell.Alive);
+        //Console.WriteLine(cell.IsLeftEdge);
+        //Console.WriteLine(cell.IsRightEdge);
+        //Console.WriteLine(cell.IsCorner);
         //Console.WriteLine("---------------------------------");
 
         newCells.Add(cell);

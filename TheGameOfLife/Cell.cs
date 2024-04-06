@@ -8,10 +8,10 @@ namespace TheGameOfLife
 {
     internal class Cell
     {
-        public bool _alive {  get; set; }
-        public bool _isLeftEdge { get; set; }
-        public bool _isRightEdge { get; set; }
-        public bool _isCorner {  get; set; }
+        private bool _alive {  get; set; }
+        private bool _isLeftEdge { get; set; }
+        private bool _isRightEdge { get; set; }
+        private bool _isCorner {  get; set; }
 
         public Cell(bool alive, bool isLeftEdge, bool isRightEdge, bool isCorner)
         {
@@ -19,6 +19,30 @@ namespace TheGameOfLife
             _isLeftEdge = isLeftEdge;
             _isRightEdge = isRightEdge;
             _isCorner = isCorner;
+        }
+
+        public bool Alive
+        {
+            get { return _alive; }
+            set { _alive = value; }
+        }
+
+        public bool IsLeftEdge
+        { 
+            get { return _isLeftEdge; } 
+            set { _isLeftEdge = value; } 
+        }
+
+        public bool IsRightEdge
+        {
+            get { return _isRightEdge; }
+            set { _isRightEdge = value; }
+        }
+
+        public bool IsCorner
+        {
+            get { return _isCorner; }
+            set { _isCorner = value; }
         }
     }
 }
