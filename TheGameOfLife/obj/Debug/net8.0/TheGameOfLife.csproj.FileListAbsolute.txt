@@ -1,0 +1,15 @@
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\bin\Debug\net8.0\TheGameOfLife.exe
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\bin\Debug\net8.0\TheGameOfLife.deps.json
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\bin\Debug\net8.0\TheGameOfLife.runtimeconfig.json
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\bin\Debug\net8.0\TheGameOfLife.dll
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\bin\Debug\net8.0\TheGameOfLife.pdb
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\obj\Debug\net8.0\TheGameOfLife.GeneratedMSBuildEditorConfig.editorconfig
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\obj\Debug\net8.0\TheGameOfLife.AssemblyInfoInputs.cache
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\obj\Debug\net8.0\TheGameOfLife.AssemblyInfo.cs
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\obj\Debug\net8.0\TheGameOfLife.csproj.CoreCompileInputs.cache
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\obj\Debug\net8.0\TheGameOfLife.sourcelink.json
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\obj\Debug\net8.0\TheGameOfLife.dll
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\obj\Debug\net8.0\refint\TheGameOfLife.dll
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\obj\Debug\net8.0\TheGameOfLife.pdb
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\obj\Debug\net8.0\TheGameOfLife.genruntimeconfig.cache
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\obj\Debug\net8.0\ref\TheGameOfLife.dll
