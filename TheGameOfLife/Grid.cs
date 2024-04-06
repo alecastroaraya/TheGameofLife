@@ -22,24 +22,53 @@ namespace TheGameOfLife
 
         public void SelectCells()
         {
-            Console.WriteLine("Please configure the initial cells in the grid. A = Alive, D = Dead\n");
-            for (int i = 0; i < Cells.Count; i++)
+            Console.Write("\nPlease configure the initial cells. Type 'random' if you want to use a random configuration or 'manual to set the cells yourself: ");
+            string configType = Console.ReadLine().ToLower();
+
+            while (configType == null || (!configType.Equals("random") && !configType.Equals("manual")))
             {
-                Console.Write($"Cell #{i}: ");
+                Console.Write("\nPlease type 'random' or 'manual' depending on how you want to configure the cells: ");
+                configType = Console.ReadLine().ToLower();
+            }
 
-                string stringAlive = Console.ReadLine().ToLower();
-                bool boolAlive = false;
-
-                while (stringAlive == null || ( !stringAlive.Equals("a") && !stringAlive.Equals("d") ) )
+            if (configType.ToLower().Equals("random"))
+            {
+                Console.WriteLine("\nRandom cell configuration chosen.");
+                for (int i = 0; i < Cells.Count; i++)
                 {
-                    Console.Write("\nPlease input the letter A or the letter D: ");
-                    stringAlive = Console.ReadLine().ToLower();
+                    string[] statusArray = { "a", "d" };
+                    Random random = new Random();
+                    int randomIndex = random.Next(statusArray.Length);
+                    string chosenStatus = statusArray[randomIndex];
+                    bool boolAlive = false;
+
+                    if (chosenStatus.Equals("a"))
+                        boolAlive = true;
+
+                    Cells[i].Alive = boolAlive;
                 }
+            }
+            else if (configType.ToLower().Equals("manual"))
+            {
+                Console.WriteLine("Please configure the initial cells in the grid. A = Alive, D = Dead\n");
+                for (int i = 0; i < Cells.Count; i++)
+                {
+                    Console.Write($"Cell #{i}: ");
 
-                if ( stringAlive.Equals("a") )
-                    boolAlive = true;
+                    string stringAlive = Console.ReadLine().ToLower();
+                    bool boolAlive = false;
 
-                Cells[i].Alive = boolAlive;
+                    while (stringAlive == null || (!stringAlive.Equals("a") && !stringAlive.Equals("d")))
+                    {
+                        Console.Write("\nPlease input the letter A or the letter D: ");
+                        stringAlive = Console.ReadLine().ToLower();
+                    }
+
+                    if (stringAlive.Equals("a"))
+                        boolAlive = true;
+
+                    Cells[i].Alive = boolAlive;
+                }
             }
 
             Console.WriteLine("\nInitial cell state configured succesfully.");
@@ -48,6 +77,7 @@ namespace TheGameOfLife
         public void Display(int generation)
         {
             Console.WriteLine($"Generation #{generation}");
+            Console.WriteLine("Green: live cells, Red: dead cells");
             Console.WriteLine("\n");
             
             for (int i = 0; i < Cells.Count; i++)

@@ -51,9 +51,9 @@ namespace TheGameOfLife
             Console.Write("Welcome to The Game of Life. Please input the size of the grid: ");
             string stringSize = Console.ReadLine();
             int size = 0;
-            while (stringSize == null || !int.TryParse(stringSize, out size) || size < 3)
+            while (stringSize == null || !int.TryParse(stringSize, out size))
             {
-                Console.Write("\nPlease input an integer grid size starting from 3: ");
+                Console.Write("\nPlease input an integer grid size: ");
                 stringSize = Console.ReadLine();
             }
             size = int.Parse(stringSize);
@@ -253,6 +253,10 @@ namespace TheGameOfLife
             for (int i = 0; i < grid.Cells.Count; i++)
             {
                 Cell currentCell = grid.Cells[i];
+
+                if (grid.Height == 1)
+                    currentCell.NewStatus = currentCell.Alive;
+
                 currentCell.Alive = currentCell.NewStatus;
             }
         }
