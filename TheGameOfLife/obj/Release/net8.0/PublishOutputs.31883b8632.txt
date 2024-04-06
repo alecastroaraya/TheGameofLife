@@ -1,0 +1,5 @@
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\bin\Release\net8.0\publish\TheGameOfLife.exe
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\bin\Release\net8.0\publish\TheGameOfLife.dll
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\bin\Release\net8.0\publish\TheGameOfLife.deps.json
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\bin\Release\net8.0\publish\TheGameOfLife.runtimeconfig.json
+D:\Downloads\VS Projects\TheGameOfLife\TheGameOfLife\bin\Release\net8.0\publish\TheGameOfLife.pdb
