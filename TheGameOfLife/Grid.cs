@@ -11,19 +11,19 @@ namespace TheGameOfLife
     {
         private int _width {  get; set; }
         private int _height { get; set; }
-        private List<Cell> cells {  get; set; }
+        public List<Cell> Cells {  get; set; }
 
         public Grid(int width, int height, List<Cell> cells)
         {
             _width = width;
             _height = height;
-            this.cells = cells;
+            this.Cells = cells;
         }
 
         public void SelectCells()
         {
             Console.WriteLine("Please configure the initial cells in the grid. A = Alive, D = Dead\n");
-            for (int i = 0; i < cells.Count; i++)
+            for (int i = 0; i < Cells.Count; i++)
             {
                 Console.Write($"Cell #{i}: ");
 
@@ -36,10 +36,10 @@ namespace TheGameOfLife
                     stringAlive = Console.ReadLine().ToLower();
                 }
 
-                if ( stringAlive.Equals('a') )
+                if ( stringAlive.Equals("a") )
                     boolAlive = true;
 
-                cells[i].Alive = boolAlive;
+                Cells[i].Alive = boolAlive;
             }
 
             Console.WriteLine("\nInitial cell state configured succesfully.");
@@ -48,7 +48,32 @@ namespace TheGameOfLife
         public void Display(int generation)
         {
             Console.WriteLine($"Generation #{generation}");
-            Console.WriteLine("Grid goes here");
+            Console.WriteLine("\n");
+            
+            for (int i = 0; i < Cells.Count; i++)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                if (Cells[i].Alive)
+                    Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("\t*");
+                if ((i + 1) % _height == 0)
+                    Console.Write("\n");
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
+
+        public int Width
+        {
+            get { return _width; }
+            set { _width = value; }
+        }
+
+        public int Height
+        {
+            get { return _height; }
+            set { _height = value; }
+        }
+
     }
 }

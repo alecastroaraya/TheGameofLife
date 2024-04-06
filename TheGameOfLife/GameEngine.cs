@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -80,7 +81,7 @@ namespace TheGameOfLife
                         isCorner = true;
                 }
 
-                Cell cell = new Cell(false, isLeftEdge, isRightEdge, isCorner);
+                Cell cell = new Cell(false, isLeftEdge, isRightEdge, isCorner, false);
 
                 //Console.WriteLine(i);
                 //Console.WriteLine("---------------------------------");
@@ -110,8 +111,9 @@ namespace TheGameOfLife
                 Console.Clear();
                 _grid.Display(_generation);
                 _generation = _generation + 1;
+                CheckAlive(_grid);
                 Console.WriteLine("\nTo stop The Game of Life, press ESC.");
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
 
                 new Thread(() =>
                 {
@@ -124,11 +126,141 @@ namespace TheGameOfLife
 
         public void GameStop()
         {
-            Console.WriteLine(" ");
-            Console.WriteLine("Thank you for playing The Game of Life.");
+            Console.WriteLine("\nTThank you for playing The Game of Life.");
             Console.WriteLine($"Total generations: {_generation}");
             Console.WriteLine("Game over!");
             _active = false;
+        }
+
+        public static void CheckAlive(Grid grid)
+        {
+            for (int i = 0; i < grid.Cells.Count; i++)
+            {
+                int liveNeighbors = 0;
+
+                Cell currentCell = grid.Cells[i];
+                Cell neighborCell = null;
+
+                int gridSize = grid.Width;
+
+                if ( !currentCell.IsLeftEdge && ( (i - gridSize) - 1) >= 0) // Upper left diagonal
+                {
+                    neighborCell = grid.Cells[ (i - gridSize) - 1];
+                    if (neighborCell.Alive)
+                    {
+                        //Console.WriteLine("a");
+                        liveNeighbors = liveNeighbors + 1;
+                    }
+                }
+
+                if ( (i - gridSize) >= 0) // Up
+                {
+                    neighborCell = grid.Cells[i - gridSize];
+                    if (neighborCell.Alive)
+                    {
+                        //Console.WriteLine("b");
+                        liveNeighbors = liveNeighbors + 1;
+                    }
+                }
+
+                if (!currentCell.IsRightEdge && ((i - gridSize) + 1) >= 0) // Upper right diagonal
+                {
+                    neighborCell = grid.Cells[(i - gridSize) + 1];
+                    if (neighborCell.Alive)
+                    {
+                        //Console.WriteLine("c");
+                        liveNeighbors = liveNeighbors + 1;
+                    }
+                }
+
+                if ( !currentCell.IsLeftEdge &&  (i - 1) >= 0 ) // Left
+                {
+                    neighborCell = grid.Cells[i - 1];
+                    if (neighborCell.Alive)
+                    {
+                        //Console.WriteLine("d");
+                        liveNeighbors = liveNeighbors + 1;
+                    }
+                }
+
+                if ( !currentCell.IsRightEdge &&  (i + 1) < (gridSize*gridSize) ) // Right
+                {
+                    neighborCell = grid.Cells[i + 1];
+                    if (neighborCell.Alive)
+                    {
+                        //Console.WriteLine("e");
+                        liveNeighbors = liveNeighbors + 1;
+                    }
+                }
+
+                if ( !currentCell.IsLeftEdge && ((i + gridSize) - 1) < (gridSize * gridSize) ) // Lower left diagonal
+                {
+                    neighborCell = grid.Cells[(i + gridSize) - 1];
+                    if (neighborCell.Alive)
+                    {
+                        //Console.WriteLine("f");
+                        liveNeighbors = liveNeighbors + 1;
+                    }
+                }
+
+                if ( (i + gridSize) < (gridSize * gridSize) ) // Down
+                {
+                    neighborCell = grid.Cells[i + gridSize];
+                    if (neighborCell.Alive)
+                    {
+                        //Console.WriteLine("g");
+                        liveNeighbors = liveNeighbors + 1;
+                    }
+                }
+
+                if (!currentCell.IsRightEdge && ((i + gridSize) + 1) < (gridSize * gridSize) ) // Lower right diagonal
+                {
+                    neighborCell = grid.Cells[(i + gridSize) + 1];
+                    if (neighborCell.Alive)
+                    {
+                        //Console.WriteLine("h");
+                        liveNeighbors = liveNeighbors + 1;
+                    }
+                }
+
+                //Console.WriteLine($"\nTest {i}---------------------------------");
+                //Console.WriteLine(currentCell.Alive);
+                //Console.WriteLine(currentCell.IsLeftEdge);
+                //Console.WriteLine(currentCell.IsRightEdge);
+                //Console.WriteLine(liveNeighbors);
+                //Console.WriteLine("Test---------------------------------\n");
+                //Console.ReadKey();
+
+                // Determine if the cell lives, dies, or reproduces depending on the neighbor count
+
+                if (!currentCell.Alive)
+                {
+                    if (liveNeighbors == 3)
+                        currentCell.NewStatus = true;
+                    else if (liveNeighbors != 3)
+                        currentCell.NewStatus = false;
+                }
+
+                if (currentCell.Alive)
+                {
+                    bool status = liveNeighbors switch
+                    {
+                        < 2 => false,
+                        2 => true,
+                        3 => true,
+                        > 3 => false
+                    };
+
+                    currentCell.NewStatus = status;
+                }
+
+            }
+
+            for (int i = 0; i < grid.Cells.Count; i++)
+            {
+                Cell currentCell = grid.Cells[i];
+                currentCell.Alive = currentCell.NewStatus;
+            }
         }
     }
 }

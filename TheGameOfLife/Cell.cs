@@ -12,13 +12,15 @@ namespace TheGameOfLife
         private bool _isLeftEdge { get; set; }
         private bool _isRightEdge { get; set; }
         private bool _isCorner {  get; set; }
+        private bool _newStatus { get; set; }
 
-        public Cell(bool alive, bool isLeftEdge, bool isRightEdge, bool isCorner)
+        public Cell(bool alive, bool isLeftEdge, bool isRightEdge, bool isCorner, bool newStatus)
         {
             _alive = alive;
             _isLeftEdge = isLeftEdge;
             _isRightEdge = isRightEdge;
             _isCorner = isCorner;
+            _newStatus = newStatus;
         }
 
         public bool Alive
@@ -43,6 +45,12 @@ namespace TheGameOfLife
         {
             get { return _isCorner; }
             set { _isCorner = value; }
+        }
+
+        public bool NewStatus
+        { 
+            get { return _newStatus; }
+            set { _newStatus = value; } 
         }
     }
 }
