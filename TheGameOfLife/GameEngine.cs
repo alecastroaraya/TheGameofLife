@@ -112,15 +112,9 @@ namespace TheGameOfLife
                 _grid.Display(_generation);
                 _generation = _generation + 1;
                 CheckAlive(_grid);
-                Console.WriteLine("\nTo stop The Game of Life, press ESC.");
-                Thread.Sleep(2000);
-
-                new Thread(() =>
-                {
-                    Thread.CurrentThread.IsBackground = true;
-                    if (Console.ReadKey().Key == ConsoleKey.Escape)
-                        GameStop();
-                }).Start();
+                Console.WriteLine("\nTo stop The Game of Life, press ESC. For a new generation, press any other key.");
+                if (Console.ReadKey().Key == ConsoleKey.Escape)
+                    GameStop();
             }
         }
 
