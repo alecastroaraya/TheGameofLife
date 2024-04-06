@@ -43,14 +43,11 @@ namespace TheGameOfLife
             }
 
             Console.WriteLine("\nInitial cell state configured succesfully.");
-            Console.WriteLine("The Game of Life will start. Press any key to continue.");
-            Console.ReadKey();
-            Console.Clear();
-            Display();
         }
 
-        void Display()
+        public void Display(int generation)
         {
+            Console.WriteLine($"Generation #{generation}");
             Console.WriteLine("Grid goes here");
         }
     }
